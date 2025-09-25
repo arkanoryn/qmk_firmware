@@ -1,0 +1,16 @@
+{
+    "manufacturer": "Skree LLC",
+    "keyboard_name": "skree/trackball",
+    "maintainer": "WainingForests",
+    "development_board": "promicro_rp2040",
+    "diode_direction": "COL2ROW",
+    "url": "www.skree.us",
+    "usb": {
+        "device_version": "1.0.0",
+        "pid": "0x2012",
+        "vid": "0xFEED"
+    },
+    "split": {
+        "enabled": true
+    }
+}
