@@ -1,9 +1,7 @@
-# Skree/Cosmos Dactyls
+# Farkann Studio - Cosmos Dactyl
 
+TODO!
 
-Skree's keyboards are custom made keyboards built by Skree LLC, after using the [cosmos](https://ryanis.cool/cosmos/beta) configurator to have the initial footprint.
-
-This folder is architectured as follow:
 
 `skree/cosmos_dactyl`: -> root directory, where common configuration files are found, including the default `config.h` and `info.json`
 `<keyboard_folder>` -> keyboard folders are built as follow:
@@ -22,17 +20,17 @@ This folder is architectured as follow:
 
 *A short description of the keyboard/project*
 
-* Keyboard Maintainer: [Marshall](https://github.com/WainingForests)
+* Keyboard Maintainer: 
 * Hardware Supported: *The PCBs, controllers supported*
 * Hardware Availability: *Links to where you can find this hardware*
 
 Make example for this keyboard (after setting up your build environment):
 
-    make skree/trackball:default
+    make farkann_studio/cosmos_dactyl:default
 
 Flashing example for this keyboard:
 
-    make skree/trackball:default:flash
+    make farkann_studio/cosmos_dactyl:default:flash
 
 See the [build environment setup](https://docs.qmk.fm/#/getting_started_build_tools) and the [make instructions](https://docs.qmk.fm/#/getting_started_make_guide) for more information. Brand new to QMK? Start with our [Complete Newbs Guide](https://docs.qmk.fm/#/newbs).
 

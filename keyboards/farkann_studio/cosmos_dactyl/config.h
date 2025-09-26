@@ -23,9 +23,16 @@
 #define SERIAL_USART_FULL_DUPLEX
 #define SERIAL_USART_TX_PIN         GP0
 #define SERIAL_USART_RX_PIN         GP1
+// TODO: check with Marshall if this is right or if I copy/pasted from somewhere
 #define SERIAL_PIO_USE_PIO0
+
 #define SERIAL_USART_TIMEOUT        100  // USART driver timeout. default 100
+
+// TODO: ask why we have this one set
+// https://docs.qmk.fm/drivers/serial#baudrate
 #define SERIAL_USART_SPEED          921600
+
+// TODO: Check if we're doing this right.
 #define SERIAL_USART_PIN_SWAP
 
 #ifdef SKREE_QUANTUM_PAINTER
