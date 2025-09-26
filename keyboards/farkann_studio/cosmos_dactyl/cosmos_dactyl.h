@@ -15,5 +15,3 @@
 */
 
 #pragma once
-
-

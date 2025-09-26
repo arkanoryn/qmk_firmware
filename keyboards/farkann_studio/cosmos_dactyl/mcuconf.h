@@ -21,6 +21,7 @@
 // #undef STM32_SPI_USE_SPI2
 // #define STM32_SPI_USE_SPI2 TRUE
 
+// Trackballs are connected through I2C
 #undef RP_I2C_USE_I2C1
 #define RP_I2C_USE_I2C1 TRUE
 

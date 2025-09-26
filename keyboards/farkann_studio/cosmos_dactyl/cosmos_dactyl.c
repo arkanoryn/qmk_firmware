@@ -17,6 +17,7 @@
 #include QMK_KEYBOARD_H
 #include "print.h"
 
+// #ifdef FARKANN_DOUBLE_TRACKBALL
 void pointing_device_init_kb(void) {
     pmw33xx_init(0);         // index 0 is the first device.
     pmw33xx_init(1);         // index 1 is the second device.
@@ -51,3 +52,4 @@ report_mouse_t pointing_device_task_combined_user(report_mouse_t left_report, re
 
     return pointing_device_combine_reports(left_report, right_report);
 }
+// #endif
