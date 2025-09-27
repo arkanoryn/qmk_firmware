@@ -16,11 +16,8 @@
         "rows": 10,
         "cols": 6
     },
-    "layout_aliases": {
-        "LAYOUT": "LAYOUT_5x3"
-    },
     "layouts": {
-        "LAYOUT_5x3": {
+        "LAYOUT_5x3_6x4": {
             "layout": [
                 {"matrix":[0,0], "label":"0,0", "x":0, "y":0},
                 {"matrix":[0,1], "label":"0,1", "x":1, "y":0},

@@ -4,32 +4,24 @@
 #include QMK_KEYBOARD_H
 #include "print.h"
 
+#include "common/layers/common.h"
+#include "common/layers/qwerty.h"
+#include "common/layers/thumbs.h"
+
 #define _QWERTY 0
 #define _CONFIG 1
 #define _EMPTY 2
 
+#define LAYOUT_WRAPPER(...) LAYOUT(__VA_ARGS__)
+
+#define ___EXTRA__________ KC_H, KC_J, KC_L
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [_QWERTY] = LAYOUT_5x3(
-        KC_Q,   KC_W,   KC_E,   KC_R,   KC_T,               /**/ KC_Y,   KC_U,   KC_I,       KC_O,   KC_P,
-        KC_A,   KC_S,   KC_D,   LT(_CONFIG, KC_F),   KC_G,  /**/ KC_H,   KC_J,   KC_K,       KC_L,   KC_SEMICOLON,
-        KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,               /**/ KC_N,   KC_M,   KC_COMMA,   KC_DOT, KC_SLASH,
-                KC_A,   KC_B,                                                           KC_D,
-                        QK_BOOT,   KC_Y,   KC_Z,               /**/ KC_S,   KC_D,
-                        KC_TAB, KC_SPC, KC_K,               /**/ KC_BSPC,KC_ENT
-    ),
-    [_CONFIG] = LAYOUT_5x3(
-        KC_A,_______,_______,_______,_______,            _______,QK_BOOT,_______,_______,_______,
-        _______,_______,_______,_______,_______,            _______,_______,_______,_______,_______,
-        _______,_______,_______,_______,_______,            _______,_______,_______,_______,_______,
-        _______,_______,                                                    _______,
-        _______,_______,_______,            _______,_______,
-        _______,_______,_______,            _______,_______
-    ),
-        [_EMPTY] =LAYOUT_5x3(
-        _______,_______,_______,_______,_______,            _______,_______,_______,_______,_______,
-        _______,_______,_______,_______,_______,            _______,_______,_______,_______,_______,
-        _______,_______,_______,_______,_______,            _______,_______,_______,_______,_______,
-        _______,_______,                                                    _______,
-        _______,_______,_______,            _______,_______,
-        _______,_______,_______,            _______,_______)
+    [_QWERTY] = LAYOUT_WRAPPER(
+        ___QWERTY_ROW_1___,
+        ___QWERTY_ROW_2___,
+        ___QWERTY_ROW_3___,
+        ___EXTRA__________,
+        __THUMBS__________
+    )
 };

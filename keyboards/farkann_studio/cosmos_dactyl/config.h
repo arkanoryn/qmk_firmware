@@ -16,8 +16,8 @@
 
 #pragma once
 
-
-#define THUMBCLUSTER 2_2
+#define THUMBCLUSTER_LEFT 6
+#define THUMBCLUSTER_RIGHT 4
 
 /**
 **    ╔╦╗╔═╗╔╦╗╔═╗╔═╗
