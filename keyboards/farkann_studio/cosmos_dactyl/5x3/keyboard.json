@@ -3,6 +3,7 @@
         "bootmagic": true,
         "extrakey": true,
         "mousekey": true,
+        "quantum_painter": true,
         "nkro": true
     },
     "matrix_pins": {

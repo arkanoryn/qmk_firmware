@@ -16,6 +16,7 @@
 
 #include QMK_KEYBOARD_H
 #include "print.h"
+#include <qp.h>
 
 // #ifdef FARKANN_DOUBLE_TRACKBALL
 void pointing_device_init_kb(void) {

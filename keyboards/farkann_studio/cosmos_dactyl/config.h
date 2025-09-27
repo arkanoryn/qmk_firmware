@@ -1,37 +1,40 @@
 /* Copyright 2025 skree.us
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
+**
+** This program is free software: you can redistribute it and/or modify
+** it under the terms of the GNU General Public License as published by
+** the Free Software Foundation, either version 2 of the License, or
+** (at your option) any later version.
+**
+** This program is distributed in the hope that it will be useful,
+** but WITHOUT ANY WARRANTY; without even the implied warranty of
+** MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+** GNU General Public License for more details.
+**
+** You should have received a copy of the GNU General Public License
+** along with this program.  If not, see <http://www.gnu.org/licenses/>.
+**/
 
 #pragma once
 
+
+#define THUMBCLUSTER 2_2
+
 /**
- *    ╔╦╗╔═╗╔╦╗╔═╗╔═╗
- *     ║ ║ ║ ║║║ ║╚═╗
- *     ╩ ╚═╝═╩╝╚═╝╚═╝
- */
+**    ╔╦╗╔═╗╔╦╗╔═╗╔═╗
+**     ║ ║ ║ ║║║ ║╚═╗
+**     ╩ ╚═╝═╩╝╚═╝╚═╝
+**/
 // TODO: #ARK verify what it's used for and how it should be configured
 #define SPLIT_TRANSACTION_IDS_KB RPC_ID_KB_CONFIG_SYNC
 // #define SERIAL_PIO_USE_PIO0                 // default, TODO: might not need it
 // #define SERIAL_USART_TIMEOUT        100  // TODO: default is 20, let's see if it still works with it. USART driver timeout
 // #define SERIAL_USART_SPEED          921600 // TODO: check what happens if we remove that
 
-/**
- *    ╔═╗╔═╗╦═╗╦╔═╗╦    ╔═╗╔═╗╔╗╔╔═╗╦╔═╗
- *    ╚═╗║╣ ╠╦╝║╠═╣║    ║  ║ ║║║║╠╣ ║║ ╦
- *    ╚═╝╚═╝╩╚═╩╩ ╩╩═╝  ╚═╝╚═╝╝╚╝╚  ╩╚═╝
- */
+/*
+**    ╔═╗╔═╗╦═╗╦╔═╗╦    ╔═╗╔═╗╔╗╔╔═╗╦╔═╗
+**    ╚═╗║╣ ╠╦╝║╠═╣║    ║  ║ ║║║║╠╣ ║║ ╦
+**    ╚═╝╚═╝╩╚═╩╩ ╩╩═╝  ╚═╝╚═╝╝╚╝╚  ╩╚═╝
+*/
 #define USE_SERIAL
 #define SPLIT_HAND_PIN              GP28    // high = left, low = right
 #define SERIAL_USART_FULL_DUPLEX
@@ -44,11 +47,11 @@
 #endif // CONSOLE_ENABLE
 
 
-/**
- *    ╦═╗╔═╗╔╗   ╔═╗╔═╗╔╗╔╔═╗╦╔═╗
- *    ╠╦╝║ ╦╠╩╗  ║  ║ ║║║║╠╣ ║║ ╦
- *    ╩╚═╚═╝╚═╝  ╚═╝╚═╝╝╚╝╚  ╩╚═╝
- */
+/*
+**    ╦═╗╔═╗╔╗   ╔═╗╔═╗╔╗╔╔═╗╦╔═╗
+**    ╠╦╝║ ╦╠╩╗  ║  ║ ║║║║╠╣ ║║ ╦
+**    ╩╚═╚═╝╚═╝  ╚═╝╚═╝╝╚╝╚  ╩╚═╝
+*/
 #ifdef RGB_MATRIX_ENABLE
 // TODO: Not tested code, need to be looked at and also how others do it; cause part can be put in the info.json
 // #define WS2812_PIO_USE_PIO1 // Force the usage of PIO1 peripheral, by default the WS2812 implementation uses the PIO0 peripheral
@@ -65,17 +68,37 @@
 // #define RGB_MATRIX_SLEEP
 #endif
 
-/**
- *    ╔═╗ ╦ ╦╔═╗╔╗╔╦╗╦ ╦╔╦╗  ╔═╗╔═╗╦╔╗╔╦╗╔═╗╦═╗  ╔═╗╔═╗╔╗╔╔═╗╦╔═╗
- *    ║═╬╗║ ║╠═╣║║║║ ║ ║║║║  ╠═╝╠═╣║║║║║ ║╣ ╠╦╝  ║  ║ ║║║║╠╣ ║║ ╦
- *    ╚═╝╚╚═╝╩ ╩╝╚╝╩ ╚═╝╩ ╩  ╩  ╩ ╩╩╝╚╝╩ ╚═╝╩╚═  ╚═╝╚═╝╝╚╝╚  ╩╚═╝
- */
+/*
+**    ╔═╗ ╦ ╦╔═╗╔╗╔╦╗╦ ╦╔╦╗  ╔═╗╔═╗╦╔╗╔╦╗╔═╗╦═╗  ╔═╗╔═╗╔╗╔╔═╗╦╔═╗
+**    ║═╬╗║ ║╠═╣║║║║ ║ ║║║║  ╠═╝╠═╣║║║║║ ║╣ ╠╦╝  ║  ║ ║║║║╠╣ ║║ ╦
+**    ╚═╝╚╚═╝╩ ╩╝╚╝╩ ╚═╝╩ ╩  ╩  ╩ ╩╩╝╚╝╩ ╚═╝╩╚═  ╚═╝╚═╝╝╚╝╚  ╩╚═╝
+*/
+#define OLED_DC_PIN GP8
+#define OLED_CS_PIN GP6
+#define OLED_RST_PIN GP7
 
-/**
- *    ╔╦╗╦═╗╔═╗╔═╗╦╔═╔╗ ╔═╗╦  ╦    ╔═╗╔═╗╔╗╔╔═╗╦╔═╗
- *     ║ ╠╦╝╠═╣║  ╠╩╗╠╩╗╠═╣║  ║    ║  ║ ║║║║╠╣ ║║ ╦
- *     ╩ ╩╚═╩ ╩╚═╝╩ ╩╚═╝╩ ╩╩═╝╩═╝  ╚═╝╚═╝╝╚╝╚  ╩╚═╝
- */
+#define OLED_DISPLAY_128X64
+
+#define LCD_CS_PIN GP6
+#define LCD_RST_PIN GP7
+#define LCD_DC_PIN GP8
+// #define LCD_SCK_PIN GP27
+// #define LCD_SDA_PIN GP26
+
+#define QUANTUM_PAINTER_DEBUG
+#define ST7735_NUM_DEVICES 2
+
+// SPI SCK
+// SPI MOSI
+// SPI CS
+// D/C
+// RST
+
+/*
+**    ╔╦╗╦═╗╔═╗╔═╗╦╔═╔╗ ╔═╗╦  ╦    ╔═╗╔═╗╔╗╔╔═╗╦╔═╗
+**     ║ ╠╦╝╠═╣║  ╠╩╗╠╩╗╠═╣║  ║    ║  ║ ║║║║╠╣ ║║ ╦
+**     ╩ ╩╚═╩ ╩╚═╝╩ ╩╚═╝╩ ╩╩═╝╩═╝  ╚═╝╚═╝╝╚╝╚  ╩╚═╝
+*/
 // #ifdef FARKANN_TRACKBALL_ENABLE
     #ifdef CONSOLE_ENABLE
       #define POINTING_DEVICE_DEBUG
