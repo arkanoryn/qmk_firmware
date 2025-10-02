@@ -23,73 +23,73 @@
 #include QMK_KEYBOARD_H
 // #include "layers.h" // each keyboard should have this file with the available layers enum
 
-#define QWERTY_B KC_B
-#define QWERTY_C KC_C
-#define QWERTY_G KC_G
-#define QWERTY_H KC_H
-#define QWERTY_J KC_J
-#define QWERTY_K KC_K
-#define QWERTY_M KC_M
-#define QWERTY_N KC_N
-#define QWERTY_P KC_P
-#define QWERTY_Q KC_Q
-#define QWERTY_T KC_T
-#define QWERTY_V KC_V
-#define QWERTY_X KC_X
-#define QWERTY_Y KC_Y
-#define QWERTY_DOT KC_DOT
-#define QWERTY_BSPC KC_BSPC
-#define QWERTY_ENT KC_ENT
-#define QWERTY_QUOT KC_QUOT
-#define QWERTY_COMM KC_COMM
+#define DEFAULT_QWERTY_B KC_B
+#define DEFAULT_QWERTY_C KC_C
+#define DEFAULT_QWERTY_G KC_G
+#define DEFAULT_QWERTY_H KC_H
+#define DEFAULT_QWERTY_J KC_J
+#define DEFAULT_QWERTY_K KC_K
+#define DEFAULT_QWERTY_M KC_M
+#define DEFAULT_QWERTY_N KC_N
+#define DEFAULT_QWERTY_P KC_P
+#define DEFAULT_QWERTY_Q KC_Q
+#define DEFAULT_QWERTY_T KC_T
+#define DEFAULT_QWERTY_V KC_V
+#define DEFAULT_QWERTY_X KC_X
+#define DEFAULT_QWERTY_Y KC_Y
+#define DEFAULT_QWERTY_DOT KC_DOT
+#define DEFAULT_QWERTY_BSPC KC_BSPC
+#define DEFAULT_QWERTY_ENT KC_ENT
+#define DEFAULT_QWERTY_QUOT KC_QUOT
+#define DEFAULT_QWERTY_COMM KC_COMM
 
 #ifdef FARKANN_POWER_USER
-    #define QWERTY_A       LT(_NUMPAD_SOUND, KC_A)
-    #define QWERTY_D       LT(_SYMBOLS, KC_D)
-    #define QWERTY_E       LALT_T(KC_E)
-    #define QWERTY_F       LT(_ACTIONS, KC_F)
-    #define QWERTY_I       RALT_T(KC_I)
-    #define QWERTY_J       LT(_ACTIONS, KC_J)
-    #define QWERTY_K       LT(_SYMBOLS, KC_K)
-    #define QWERTY_L       LT(_ACCENTS, KC_L)
-    #define QWERTY_O       RCTL_T(KC_O)
-    #define QWERTY_R       LGUI_T(KC_R)
-    #define QWERTY_S       LT(_ACCENTS, KC_S)
-    #define QWERTY_U       RGUI_T(KC_U)
-    #define QWERTY_W       LCTL_T(KC_W)
-    #define QWERTY_Z       LSFT_T(KC_Z)
-    #define QWERTY_SCLN    LT(_NUMPAD_SOUND, KC_SCLN)
-    #define QWERTY_SLSH    RSFT_T(KC_SLSH)
+    #define DEFAULT_QWERTY_A       LT(_NUMPAD_SOUND, KC_A)
+    #define DEFAULT_QWERTY_D       LT(_SYMBOLS, KC_D)
+    #define DEFAULT_QWERTY_E       LALT_T(KC_E)
+    #define DEFAULT_QWERTY_F       LT(_ACTIONS, KC_F)
+    #define DEFAULT_QWERTY_I       RALT_T(KC_I)
+    #define DEFAULT_QWERTY_J       LT(_ACTIONS, KC_J)
+    #define DEFAULT_QWERTY_K       LT(_SYMBOLS, KC_K)
+    #define DEFAULT_QWERTY_L       LT(_ACCENTS, KC_L)
+    #define DEFAULT_QWERTY_O       RCTL_T(KC_O)
+    #define DEFAULT_QWERTY_R       LGUI_T(KC_R)
+    #define DEFAULT_QWERTY_S       LT(_ACCENTS, KC_S)
+    #define DEFAULT_QWERTY_U       RGUI_T(KC_U)
+    #define DEFAULT_QWERTY_W       LCTL_T(KC_W)
+    #define DEFAULT_QWERTY_Z       LSFT_T(KC_Z)
+    #define DEFAULT_QWERTY_SCLN    LT(_NUMPAD_SOUND, KC_SCLN)
+    #define DEFAULT_QWERTY_SLSH    RSFT_T(KC_SLSH)
 #else
-    #define QWERTY_A       KC_A
-    #define QWERTY_D       KC_D
-    #define QWERTY_E       KC_E
-    #define QWERTY_F       KC_F
-    #define QWERTY_I       KC_I
-    #define QWERTY_J       KC_J
-    #define QWERTY_K       KC_K
-    #define QWERTY_L       KC_L
-    #define QWERTY_O       KC_O
-    #define QWERTY_R       KC_R
-    #define QWERTY_S       KC_S
-    #define QWERTY_U       KC_U
-    #define QWERTY_W       KC_W
-    #define QWERTY_Z       KC_Z
-    #define QWERTY_SCLN    KC_SCLN
-    #define QWERTY_SLSH    KC_SLSH
+    #define DEFAULT_QWERTY_A       KC_A
+    #define DEFAULT_QWERTY_D       KC_D
+    #define DEFAULT_QWERTY_E       KC_E
+    #define DEFAULT_QWERTY_F       KC_F
+    #define DEFAULT_QWERTY_I       KC_I
+    #define DEFAULT_QWERTY_J       KC_J
+    #define DEFAULT_QWERTY_K       KC_K
+    #define DEFAULT_QWERTY_L       KC_L
+    #define DEFAULT_QWERTY_O       KC_O
+    #define DEFAULT_QWERTY_R       KC_R
+    #define DEFAULT_QWERTY_S       KC_S
+    #define DEFAULT_QWERTY_U       KC_U
+    #define DEFAULT_QWERTY_W       KC_W
+    #define DEFAULT_QWERTY_Z       KC_Z
+    #define DEFAULT_QWERTY_SCLN    KC_SCLN
+    #define DEFAULT_QWERTY_SLSH    KC_SLSH
 #endif // FARKANN_POWER_USER
 
-#define ___QWERTY_ROW_1___ QWERTY_Q, QWERTY_W, QWERTY_E, QWERTY_R, QWERTY_T, QWERTY_Y, QWERTY_U, QWERTY_I,      QWERTY_O,  QWERTY_P
-#define ___QWERTY_ROW_2___ QWERTY_A, QWERTY_S, QWERTY_D, QWERTY_F, QWERTY_G, QWERTY_H, QWERTY_J, QWERTY_K,      QWERTY_L,  QWERTY_SCLN
-#define ___QWERTY_ROW_3___ QWERTY_Z, QWERTY_X, QWERTY_C, QWERTY_V, QWERTY_B, QWERTY_N, QWERTY_M, QWERTY_COMM,   QWERTY_DOT,QWERTY_SLSH
+#define ___DEFAULT_QWERTY_ROW_1___ DEFAULT_QWERTY_Q, DEFAULT_QWERTY_W, DEFAULT_QWERTY_E, DEFAULT_QWERTY_R, DEFAULT_QWERTY_T, DEFAULT_QWERTY_Y, DEFAULT_QWERTY_U, DEFAULT_QWERTY_I,      DEFAULT_QWERTY_O,  DEFAULT_QWERTY_P
+#define ___DEFAULT_QWERTY_ROW_2___ DEFAULT_QWERTY_A, DEFAULT_QWERTY_S, DEFAULT_QWERTY_D, DEFAULT_QWERTY_F, DEFAULT_QWERTY_G, DEFAULT_QWERTY_H, DEFAULT_QWERTY_J, DEFAULT_QWERTY_K,      DEFAULT_QWERTY_L,  DEFAULT_QWERTY_SCLN
+#define ___DEFAULT_QWERTY_ROW_3___ DEFAULT_QWERTY_Z, DEFAULT_QWERTY_X, DEFAULT_QWERTY_C, DEFAULT_QWERTY_V, DEFAULT_QWERTY_B, DEFAULT_QWERTY_N, DEFAULT_QWERTY_M, DEFAULT_QWERTY_COMM,   DEFAULT_QWERTY_DOT,DEFAULT_QWERTY_SLSH
 
 #ifdef FARKANN_EXTRA_COLS
     #ifdef FARKANN_NUMBER_ROW
-        #define ___QWERTY_ROW_1___ KC_TAB,    ___QWERTY_ROW_1___, KC_BSLS
+        #define ___DEFAULT_QWERTY_ROW_1___ KC_TAB,    ___DEFAULT_QWERTY_ROW_1___, KC_BSLS
     #else
-        #define ___QWERTY_ROW_1___ KC_TAB,    ___QWERTY_ROW_1___, KC_BSPC
+        #define ___DEFAULT_QWERTY_ROW_1___ KC_TAB,    ___DEFAULT_QWERTY_ROW_1___, KC_BSPC
     #endif // FARKANN_NUMBER_ROW
 
-    #define ___QWERTY_ROW_2___ KC_CAPS,   ___QWERTY_ROW_2___, KC_ENT
-    #define ___QWERTY_ROW_3___ KC_LSHFT,  ___QWERTY_ROW_3___, KC_RSHFT
+    #define ___DEFAULT_QWERTY_ROW_2___ KC_CAPS,   ___DEFAULT_QWERTY_ROW_2___, KC_ENT
+    #define ___DEFAULT_QWERTY_ROW_3___ KC_LSHFT,  ___DEFAULT_QWERTY_ROW_3___, KC_RSHFT
 #endif // FARKANN_EXTRA_COLS

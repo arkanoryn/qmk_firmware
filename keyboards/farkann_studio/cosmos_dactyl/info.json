@@ -1,7 +1,7 @@
 {
-    "manufacturer": "Skree LLC",
-    "keyboard_name": "skree/trackball",
-    "maintainer": "WainingForests",
+    "manufacturer": "Farkann Studio",
+    "keyboard_name": "farkann_studio/dactyl",
+    "maintainer": "Ark'Anoryn",
     "development_board": "promicro_rp2040",
     "diode_direction": "COL2ROW",
     "url": "www.skree.us",
@@ -12,5 +12,8 @@
     },
     "split": {
         "enabled": true
-    }
+    },
+    "tags": [
+        "split"
+    ]
 }

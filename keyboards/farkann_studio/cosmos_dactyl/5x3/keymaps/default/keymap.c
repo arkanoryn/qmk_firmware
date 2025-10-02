@@ -18,9 +18,9 @@
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_QWERTY] = LAYOUT_WRAPPER(
-        ___QWERTY_ROW_1___,
-        ___QWERTY_ROW_2___,
-        ___QWERTY_ROW_3___,
+        ___DEFAULT_QWERTY_ROW_1___,
+        ___DEFAULT_QWERTY_ROW_2___,
+        ___DEFAULT_QWERTY_ROW_3___,
         ___EXTRA__________,
         __THUMBS__________
     )

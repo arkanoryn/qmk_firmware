@@ -1,4 +1,4 @@
-/* Copyright 2025 skree.us
+/* Copyright 2025 Pierre-Nicolas SORMANI, aka Ark'Anoryn (@arkanoryn)
 **
 ** This program is free software: you can redistribute it and/or modify
 ** it under the terms of the GNU General Public License as published by
@@ -12,12 +12,14 @@
 **
 ** You should have received a copy of the GNU General Public License
 ** along with this program.  If not, see <http://www.gnu.org/licenses/>.
-**/
+*/
 
 #pragma once
 
-#define THUMBCLUSTER_LEFT 6
-#define THUMBCLUSTER_RIGHT 4
+#define FARKANN_TRACKBALL_ENABLED
+#define FARKANN_DOUBLE_TRACKBALL /* || FARKANN_SINGLE_TRACKBALL */
+#define FARKANN_LCD_SCREEN
+#define FARKANN_DOUBLE_SCREEN
 
 /**
 **    ╔╦╗╔═╗╔╦╗╔═╗╔═╗
@@ -42,11 +44,6 @@
 #define SERIAL_USART_RX_PIN         GP1
 #define SERIAL_USART_PIN_SWAP
 
-#ifdef CONSOLE_ENABLE
-  #define SERIAL_DEBUG
-#endif // CONSOLE_ENABLE
-
-
 /*
 **    ╦═╗╔═╗╔╗   ╔═╗╔═╗╔╗╔╔═╗╦╔═╗
 **    ╠╦╝║ ╦╠╩╗  ║  ║ ║║║║╠╣ ║║ ╦
@@ -54,18 +51,18 @@
 */
 #ifdef RGB_MATRIX_ENABLE
 // TODO: Not tested code, need to be looked at and also how others do it; cause part can be put in the info.json
-// #define WS2812_PIO_USE_PIO1 // Force the usage of PIO1 peripheral, by default the WS2812 implementation uses the PIO0 peripheral
-// #define WS2812_DI_PIN GP8
-// #define SPLIT_TRANSPORT_MIRROR
-// #define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_SOLID_REACTIVE // Sets the default mode, if none has been set
-// #define RGB_MATRIX_DEFAULT_HUE 33 // Sets the default hue value, if none has been set
-// #define RGB_MATRIX_DEFAULT_SAT 255 // Sets the default saturation value, if none has been set
-// #define RGB_MATRIX_DEFAULT_SPD 50
-// #define RGB_MATRIX_DEFAULT_VAL RGB_MATRIX_MAXIMUM_BRIGHTNESS
-// #define RGB_DISABLE_WHEN_USB_SUSPENDED
-// #define RGB_MATRIX_KEYPRESSES
-// #define RGB_MATRIX_FRAMEBUFFER_EFFECTS
-// #define RGB_MATRIX_SLEEP
+#   define WS2812_PIO_USE_PIO1 // Force the usage of PIO1 peripheral, by default the WS2812 implementation uses the PIO0 peripheral
+#   define WS2812_DI_PIN GP8
+#   define SPLIT_TRANSPORT_MIRROR
+#   define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_SOLID_REACTIVE // Sets the default mode, if none has been set
+#   define RGB_MATRIX_DEFAULT_HUE 33 // Sets the default hue value, if none has been set
+#   define RGB_MATRIX_DEFAULT_SAT 255 // Sets the default saturation value, if none has been set
+#   define RGB_MATRIX_DEFAULT_SPD 50
+#   define RGB_MATRIX_DEFAULT_VAL RGB_MATRIX_MAXIMUM_BRIGHTNESS
+#   define RGB_DISABLE_WHEN_USB_SUSPENDED
+#   define RGB_MATRIX_KEYPRESSES
+#   define RGB_MATRIX_FRAMEBUFFER_EFFECTS
+#   define RGB_MATRIX_SLEEP
 #endif
 
 /*
@@ -73,60 +70,52 @@
 **    ║═╬╗║ ║╠═╣║║║║ ║ ║║║║  ╠═╝╠═╣║║║║║ ║╣ ╠╦╝  ║  ║ ║║║║╠╣ ║║ ╦
 **    ╚═╝╚╚═╝╩ ╩╝╚╝╩ ╚═╝╩ ╩  ╩  ╩ ╩╩╝╚╝╩ ╚═╝╩╚═  ╚═╝╚═╝╝╚╝╚  ╩╚═╝
 */
-#define OLED_DC_PIN GP8
-#define OLED_CS_PIN GP6
-#define OLED_RST_PIN GP7
 
-#define OLED_DISPLAY_128X64
+#ifdef FARKANN_LCD_SCREEN
+#   define OLED_DC_PIN GP8
+#   define OLED_CS_PIN GP6
+#   define OLED_RST_PIN GP7
+#   define OLED_DISPLAY_128X64
 
-#define LCD_CS_PIN GP6
-#define LCD_RST_PIN GP7
-#define LCD_DC_PIN GP8
-// #define LCD_SCK_PIN GP27
-// #define LCD_SDA_PIN GP26
-
-#define QUANTUM_PAINTER_DEBUG
-#define ST7735_NUM_DEVICES 2
-
-// SPI SCK
-// SPI MOSI
-// SPI CS
-// D/C
-// RST
+// #   ifdef FARKANN_DOUBLE_SCREEN
+// #      define ST7735_NUM_DEVICES 2
+// #   elif
+// #       define ST7735_NUM_DEVICES 1
+// #   endif // FARKANN_DOUBLE_SCREEN
+#endif // FARKANN_LCD_SCREEN
 
 /*
 **    ╔╦╗╦═╗╔═╗╔═╗╦╔═╔╗ ╔═╗╦  ╦    ╔═╗╔═╗╔╗╔╔═╗╦╔═╗
 **     ║ ╠╦╝╠═╣║  ╠╩╗╠╩╗╠═╣║  ║    ║  ║ ║║║║╠╣ ║║ ╦
 **     ╩ ╩╚═╩ ╩╚═╝╩ ╩╚═╝╩ ╩╩═╝╩═╝  ╚═╝╚═╝╝╚╝╚  ╩╚═╝
 */
-// #ifdef FARKANN_TRACKBALL_ENABLE
-    #ifdef CONSOLE_ENABLE
-      #define POINTING_DEVICE_DEBUG
-    #endif // CONSOLE_ENABLE
+#ifdef FARKANN_TRACKBALL_ENABLED
+#   define SPI_DRIVER SPID0
+#   define SPI_MOSI_PIN GP3
+#   define SPI_MISO_PIN GP4
+#   define SPI_SCK_PIN GP2
+#   define PMW33XX_CS_PIN GP5
 
-    #define SPI_DRIVER SPID0
-    #define SPI_MOSI_PIN GP3
-    #define SPI_MISO_PIN GP4
-    #define SPI_SCK_PIN GP2
-    #define PMW33XX_CS_PIN GP5
+#   define POINTING_DEVICE_AUTO_MOUSE_ENABLE
 
-    #define ROTATIONAL_TRANSFORM_ANGLE  10 // TESTING RIGHT SHIFTED FROM -35 TO -45 TO TEST LEFT
-    #define POINTING_DEVICE_TASK_THROTTLE_MS 1
-    #define PMW33XX_LIFTOFF_DISTANCE 0x03
+// TODO: will have to be verified on future builds
+#   define ROTATIONAL_TRANSFORM_ANGLE  10
+#   define POINTING_DEVICE_TASK_THROTTLE_MS 1
+#   define PMW33XX_LIFTOFF_DISTANCE 0x03
 
-    #define POINTING_DEVICE_AUTO_MOUSE_ENABLE
-    // only required if not setting mouse layer elsewhere
-    // NOTE: maybe we want to move that to lower layer? TBD
-    // #define AUTO_MOUSE_DEFAULT_LAYER 3
-    // #define DYNAMIC_KEYMAP_LAYER_COUNT 5
-// #endif // FARKANN_TRACKBALL_ENABLE
-//
-// #ifdef FARKANN_SINGLE_TRACKBALL
-// #endif // FARKANN_SINGLE_TRACKBALL
-//
-// #ifdef FARKANN_DOUBLE_TRACKBALL
-    #define SPLIT_POINTING_ENABLE
-    #define POINTING_DEVICE_COMBINED
-    #define POINTING_DEVICE_INVERT_Y_RIGHT
-    #define POINTING_DEVICE_INVERT_Y
-// #endif // FARKANN_DOUBLE_TRACKBALL
+// only required if not setting mouse layer elsewhere
+// TODO: maybe we want to move that to lower layer? TBD
+// #define AUTO_MOUSE_DEFAULT_LAYER 3
+// #define DYNAMIC_KEYMAP_LAYER_COUNT 5
+
+// TODO: add proper code for single trackballs
+#   ifdef FARKANN_SINGLE_TRACKBALL
+#   endif // FARKANN_SINGLE_TRACKBALL
+
+#   ifdef FARKANN_DOUBLE_TRACKBALL
+#       define SPLIT_POINTING_ENABLE
+#       define POINTING_DEVICE_COMBINED
+#       define POINTING_DEVICE_INVERT_Y_RIGHT
+#       define POINTING_DEVICE_INVERT_Y
+#   endif // FARKANN_DOUBLE_TRACKBALL
+#endif // FARKANN_TRACKBALL_ENABLED
