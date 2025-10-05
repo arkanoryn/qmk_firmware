@@ -18,51 +18,42 @@
 
 #include "lcd.h"
 
-static painter_device_t display_1;
+static painter_device_t display;
 
-#ifdef FARKANN_DOUBLE_SCREEN
-static painter_device_t display_2;
-#endif // FARKANN_DOUBLE_SCREEN
+void    init_displays_kb(void) {
+    display = qp_st7735_make_spi_device(FARKANN_SCREEN_WIDTH, FARKANN_SCREEN_HEIGHT, OLED_CS_PIN, OLED_DC_PIN, OLED_RST_PIN, FARKANN_SCREEN_SPI_DIVISOR, FARKANN_SCREEN_SPI_MODE);
 
-void    init_displays(void) {
-    display_1 = qp_st7735_make_spi_device(FARKANN_SCREEN_WIDTH, FARKANN_SCREEN_HEIGHT, OLED_CS_PIN, OLED_DC_PIN, OLED_RST_PIN, FARKANN_SCREEN_SPI_DIVISOR, FARKANN_SCREEN_SPI_MODE);
-    qp_init(display_1, FARKANN_SCREEN_ROTATION);
-    qp_rect(display_1, 0, 0, FARKANN_SCREEN_WIDTH, FARKANN_SCREEN_HEIGHT, 0, 0, 0, true);
-
-
-#ifdef FARKANN_DOUBLE_SCREEN
-    display_2 = qp_st7735_make_spi_device(FARKANN_SCREEN_2_WIDTH, FARKANN_SCREEN_2_HEIGHT, OLED_CS_PIN, OLED_DC_PIN, OLED_RST_PIN, FARKANN_SCREEN_2_SPI_DIVISOR, FARKANN_SCREEN_2_SPI_MODE);
-    qp_init(display_2, FARKANN_SCREEN_2_ROTATION);
-    qp_rect(display_2, 0, 0, FARKANN_SCREEN_2_WIDTH, FARKANN_SCREEN_2_HEIGHT, 0, 0, 0, true);
-#endif // FARKANN_DOUBLE_SCREEN
+    qp_init(display, FARKANN_SCREEN_ROTATION);
+    qp_rect(display, 0, 0, FARKANN_SCREEN_WIDTH, FARKANN_SCREEN_HEIGHT, 0, 0, 0, true);
 };
 
-void draw_default_screen_1(void) {
+void draw_default_screen_1_kb(void) {
     for (int i = 0; i < 239; i+=8) {
-        // bool qp_rect(painter_device_t device, uint16_t left, uint16_t top, uint16_t right, uint16_t bottom, uint8_t hue, uint8_t sat, uint8_t val, bool filled);
-        qp_rect(display_1, 0, i, 25, i+7, i, 255, 255, true);
-        qp_flush(display_1);
+        qp_rect(display, 0, i, 25, i+7, i, 255, 255, true);
+        qp_flush(display);
     }
 };
 
-#ifdef FARKANN_DOUBLE_SCREEN
-void draw_default_screen_2(void) {
+// #ifdef FARKANN_DOUBLE_SCREEN
+void draw_default_screen_2_kb(void) {
     for (int i = 0; i < 239; i+=8) {
-        qp_circle(display_2, 32, 32+i, 4, i, 255, 255, true);
-        qp_flush(display_2);
+        qp_circle(display, 32, 32+i, 4, i, 255, 255, true);
+        qp_flush(display);
     }
 };
-#endif // FARKANN_DOUBLE_SCREEN
+// #endif // FARKANN_DOUBLE_SCREEN
 
-void    draw_default(void) {
-    static uint32_t last_draw = 0;
+void    draw_defaults_kb(void) {
+static uint32_t last_draw = 0;
 
     if (timer_elapsed32(last_draw) > 33) { // Throttle to 30fps
         last_draw = timer_read32();
-        draw_default_screen_1();
-#ifdef FARKANN_DOUBLE_SCREEN
-        draw_default_screen_2();
-#endif // FARKANN_DOUBLE_SCREEN
+
+        if (is_keyboard_left()) {
+            draw_default_screen_1_kb();
+        } else {
+            draw_default_screen_2_kb();
+        }
     }
 };
 #endif // FARKANN_LCD_SCREEN

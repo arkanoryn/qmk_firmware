@@ -28,6 +28,7 @@ void pointing_device_init_kb(void) {
     pmw33xx_init(1);         // index 1 is the second device.
     pmw33xx_set_cpi(1, 6000); // applies to second sensor
     #endif // FARKANN_DOUBLE_TRACKBALL
+
     pointing_device_init_user();
 }
 
@@ -41,6 +42,7 @@ report_mouse_t pointing_device_task_kb(report_mouse_t mouse_report) {
         mouse_report.x = constrain_hid(mouse_report.x + report.delta_x);
         mouse_report.y = constrain_hid(mouse_report.y + report.delta_y);
     }
+
     return pointing_device_task_user(mouse_report);
 }
 #endif // FARKANN_TRACKBALL_ENABLED
@@ -54,13 +56,17 @@ void keyboard_post_init_kb(void) {
 #endif // FARKANN_TRACKBALL_ENABLED
 
 #ifdef FARKANN_LCD_SCREEN
-    init_displays();
+    // init_displays_kb();
 #endif // FARKANN_LCD_SCREEN
+
+    keyboard_post_init_user();
 };
 
 void housekeeping_task_kb(void) {
     #ifdef FARKANN_LCD_SCREEN
-    draw_default();
+    // draw_defaults_kb();
     #endif // FARKANN_LCD_SCREEN
+
+    housekeeping_task_user();
 };
 

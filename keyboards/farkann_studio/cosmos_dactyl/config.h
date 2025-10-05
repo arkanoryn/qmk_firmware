@@ -78,7 +78,7 @@
 #   define OLED_DISPLAY_128X64
 
 // #   ifdef FARKANN_DOUBLE_SCREEN
-// #      define ST7735_NUM_DEVICES 2
+#      define ST7735_NUM_DEVICES 2
 // #   elif
 // #       define ST7735_NUM_DEVICES 1
 // #   endif // FARKANN_DOUBLE_SCREEN
